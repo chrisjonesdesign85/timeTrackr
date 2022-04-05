@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <title>Clock Test</title>
+  </head>
+
+  <body>
+    <section class="container">    
+      <h1>Time Trackr</h1>
+        <div>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero ipsum id provident repellendus doloribus necessitatibus sint, blanditiis debitis sapiente eum libero nesciunt ipsa recusandae, unde nostrum labore suscipit! Ea, distinctio.</p>
+        </div>
+        <div id="timerContainer">
+          <div>
+          <input id="project-input" type="text" placeholder="Enter a Project" />
+        <button id="project-submit" class="submit" type="submit">+</button>
+        </div>
+          <div class="timer" onclick="startTimer()">Start Working!</div>
+          <div class="startTimer reset" onclick="startTimer(), startTime()" >
+            <i class="fas fa-play"></i>
+          </div>
+          <div class="pauseTimer reset" onclick="pauseTimer(), pauseTime()" >
+            <i class="fas fa-pause"></i>
+          </div>
+          <div class="resetTimer reset" onclick="resetTimer()">Reset</div>
+        </div>
+    </section>
+
+
+    <!-- mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+
+    <!-- stopwatch js -->
+    <script type="text/javascript" src="stopWatch.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
