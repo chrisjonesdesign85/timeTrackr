@@ -80,6 +80,3 @@ function getShowTime(){
   milliseconds = (milliseconds < 100) ? (milliseconds < 10) ? "00" + milliseconds : "0" + milliseconds : milliseconds;
   timerDisplay.innerHTML = hours + ':' + minutes + ':' + seconds + ':' + milliseconds;
 }
-
-// exports
-export {startTimer, pauseTimer, resetTimer, getShowTime, timerDisplay, }
