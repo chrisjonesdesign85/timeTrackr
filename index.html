@@ -12,27 +12,29 @@
 
   <body>
     <section class="container">    
-      <h1>Time Trackr</h1>
+        <div id="timerContainer">
+          <h1>Time Trackr</h1>
         <div>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero ipsum id provident repellendus doloribus necessitatibus sint, blanditiis debitis sapiente eum libero nesciunt ipsa recusandae, unde nostrum labore suscipit! Ea, distinctio.</p>
         </div>
-        <div id="timerContainer">
           <div>
           <input id="project-input" type="text" placeholder="Enter a Project" />
         <button id="project-submit" class="submit" type="submit">+</button>
         </div>
-        <div class="projectContainer">
-          <div class="hours">09</div>
-          <h3 class="title">This is the Title</h3>
-          <div class="timer" onclick="startTimer()">Start Working!</div>
-          <div class="startTimer reset" onclick="startTimer()" >
-            <i class="fas fa-play"></i>
-          </div>
-          <div class="pauseTimer reset" onclick="pauseTimer(), pauseTime()" >
-            <i class="fas fa-pause"></i>
-          </div>
-          <div class="resetTimer reset" onclick="resetTimer()">Reset</div>
-        </div>
+        <div id="projects">
+          <!-- <div id="projectContainer">
+            <div class="hours"><p>[09]</p></div>
+            <h3 class="title">This is the Title</h3>
+            <div class="timer" onclick="startTimer()">00:00:00:00</div>
+            <div class="startTimer reset" onclick="startTimer()" >
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="pauseTimer reset" onclick="pauseTimer(), pauseTime()" >
+              <i class="fas fa-pause"></i>
+            </div>
+            <div class="resetTimer reset" onclick="resetTimer()">Reset</div> -->
+          </div><!-- end project container -->
+        </div><!-- end projects -->
          
         </div>
     </section>
