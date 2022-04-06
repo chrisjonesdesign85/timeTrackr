@@ -12,7 +12,7 @@ var running = 0;
 function startTimer(){
   if(!running){
     startTime = new Date().getTime();
-    tInterval = setInterval(getShowTime, 1);
+    tInterval = this.setInterval(getShowTime, 1);
     paused = 0;
     running = 1;
     timerDisplay.style.background = "#FF0000";

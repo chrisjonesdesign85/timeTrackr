@@ -82,8 +82,8 @@ let addProject = () => {
 
 
     playBtn.addEventListener('click', () => {
-        console.log("hey")
-        startTimer()
+        console.log("start")
+            startTimer()
     })    
 
     pauseBtn.addEventListener('click', () =>{
@@ -98,7 +98,7 @@ let addProject = () => {
     
     deleteBtn.addEventListener('click', (e) => {
         e.stopPropagation()
-        let res = confirm(`Delete ${title}?`)
+        let res = confirm(`Delete ${input}?`)
         if (res == true) {
             let proj = document.getElementById("projects")
             proj.removeChild(projDiv)
