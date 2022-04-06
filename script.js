@@ -28,8 +28,7 @@ const projectSubmit = document.getElementById("project-submit")
 // import { timerDisplay } from './stopWatch.js'
 // import { getShowTime } from ''
 
-let addProject = () => {
-    
+let addProject = () => {    
     const inputValue = input.value
 
     //create project div
@@ -81,9 +80,11 @@ let addProject = () => {
     })
 
 
-    playBtn.addEventListener('click', () => {
+    playBtn.addEventListener('click', (e) => {
         console.log("start")
-            startTimer()
+        e.target.style.background="green"
+        let starter = startTimer(e)  
+        starter
     })    
 
     pauseBtn.addEventListener('click', () =>{
@@ -98,7 +99,7 @@ let addProject = () => {
     
     deleteBtn.addEventListener('click', (e) => {
         e.stopPropagation()
-        let res = confirm(`Delete ${input}?`)
+        let res = confirm(`Delete?`)
         if (res == true) {
             let proj = document.getElementById("projects")
             proj.removeChild(projDiv)
@@ -117,21 +118,18 @@ let addProject = () => {
     projDiv.appendChild(resetBtn)
     projDiv.appendChild(deleteBtn)
 
-    deleteBtn.classList.add("reset")
+    // deleteBtn.classList.add("reset")
     //append the project to the projects div
     document.getElementById("projects").appendChild(projDiv)
 
 
 
-
-
-
-
-var startTimerButton = document.querySelector('.startTimer');
-var pauseTimerButton = document.querySelector('.pauseTimer');
-var timerDisplay = document.querySelector('.timer');
-var startTime;
-var updatedTime;
+        // stop-watch.js
+let startTimerButton = document.querySelector('.startTimer');
+let pauseTimerButton = document.querySelector('.pauseTimer');
+let timerDisplay = document.querySelector('.timer');
+let startTime;
+let updatedTime;
 var difference;
 var tInterval;
 var savedTime;
@@ -209,6 +207,13 @@ function getShowTime(){
   milliseconds = (milliseconds < 100) ? (milliseconds < 10) ? "00" + milliseconds : "0" + milliseconds : milliseconds;
   timerDisplay.innerHTML = hours + ':' + minutes + ':' + seconds + ':' + milliseconds;
 }
+
+
+
+
+
+
+
 
 input.value = "" // clear input field after a Project Title has been entered
 } // end addProject function
