@@ -30,12 +30,15 @@ body {
 }
 
 .projectContainer {
-  border: 2px solid pink;
   display: flex;
-  /* flex-direction: space-around; */
+  border: 2px solid pink;
 }
 
+
 .hours {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.5rem;
   background: green;
   /* width: 50px; */

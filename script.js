@@ -53,39 +53,60 @@ let addProject = () => {
     timer.classList.add("timer")
     timer.innerHTML = "00:00:00"
 
-    timer.addEventListener('click', () => {
-
-    })
-
+  
     //play btn (startTimer)
     let playBtn = document.createElement("div")
     playBtn.classList.add("startTimer", "reset")
     playBtn.innerHTML = '<i class="fas fa-play"></i>'
-
-    playBtn.addEventListener('click', (e) => {
-        e.stopPropagation()
-        console.log("hey")
-        startTimer()
-    })
 
     //pause btn
     let pauseBtn = document.createElement("div")
     pauseBtn.classList.add("pauseTimer", "reset")
     pauseBtn.innerHTML = '<i class="fas fa-pause"></i>'
 
+    //reset btn
+    let resetBtn = document.createElement("div")
+    resetBtn.classList.add("resetTimer", "reset")
+    resetBtn.innerHTML = "Rest Btn"
+
+    // delete btn
+    let deleteBtn = document.createElement("div")
+    deleteBtn.classList.add("deleteBtn", "reset")
+    deleteBtn.innerHTML = "Delete"
+
+
+    // Listeners
+    timer.addEventListener('click', () => {
+        console.log("Display")
+    })
+
+
+    playBtn.addEventListener('click', () => {
+        console.log("hey")
+        startTimer()
+    })    
+
     pauseBtn.addEventListener('click', () =>{
         console.log("pause")
         pauseTimer()
     })
 
-    //reset btn
-    let resetBtn = document.createElement("div")
-    resetBtn.classList.add("resetTimer", "reset")
-    resetBtn.innerHTML = "Reset"
-
-    // delete btn
-    let deleteBtn = document.createElement("div")
-    deleteBtn.classList.add("deleteBtn")
+    resetBtn.addEventListener('click', () => {
+        console.log("reset")
+        resetTimer()
+    })
+    
+    deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation()
+        let res = confirm(`Delete ${title}?`)
+        if (res == true) {
+            let proj = document.getElementById("projects")
+            proj.removeChild(projDiv)
+        } else {
+            return true
+        }
+        console.log("delete")
+    })
 
     // append the created elements
     projDiv.appendChild(hours)
@@ -95,6 +116,8 @@ let addProject = () => {
     projDiv.appendChild(pauseBtn)
     projDiv.appendChild(resetBtn)
     projDiv.appendChild(deleteBtn)
+
+    deleteBtn.classList.add("reset")
     //append the project to the projects div
     document.getElementById("projects").appendChild(projDiv)
 
@@ -104,7 +127,7 @@ let addProject = () => {
 
 
 
-    var startTimerButton = document.querySelector('.startTimer');
+var startTimerButton = document.querySelector('.startTimer');
 var pauseTimerButton = document.querySelector('.pauseTimer');
 var timerDisplay = document.querySelector('.timer');
 var startTime;
@@ -186,6 +209,8 @@ function getShowTime(){
   milliseconds = (milliseconds < 100) ? (milliseconds < 10) ? "00" + milliseconds : "0" + milliseconds : milliseconds;
   timerDisplay.innerHTML = hours + ':' + minutes + ':' + seconds + ':' + milliseconds;
 }
+
+input.value = "" // clear input field after a Project Title has been entered
 } // end addProject function
 
 

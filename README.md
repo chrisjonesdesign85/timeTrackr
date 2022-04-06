@@ -15,8 +15,8 @@ An app to track the time spent on coding projects.
 - [*] import digital clock font
 - [] change clock font to digital font and make bigger
 - [] change colors to match the color scheme above.
-- [] `addProject()` function
-- []
+- [*] `addProject()` function
+- [*] `delete project()` function
 
 #### May have to use an object to store
 
