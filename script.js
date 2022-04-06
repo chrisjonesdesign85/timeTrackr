@@ -8,16 +8,16 @@ const projectSubmit = document.getElementById("project-submit")
 // }
 
 
-let project = {
-    start: startTime,
-    // end: endTime
-    // totalHours: function() {
-    //     //military time 
-    //     //subtract startTime from endTime
-    //     return this.startTime - this.endTime
-    //     console.log("We getting it!")
-    // }
-}
+// let project = {
+//     start: startTime,
+//     // end: endTime
+//     // totalHours: function() {
+//     //     //military time 
+//     //     //subtract startTime from endTime
+//     //     return this.startTime - this.endTime
+//     //     console.log("We getting it!")
+//     // }
+// }
 
 let addProject = () => {
     console.log(input)
@@ -43,14 +43,14 @@ let pauseTime = () => {
     // let startTime = project.startTime
     // let endingTime = project.endTime
     // let hours = endingTime - startingTime
-    console.log("get time on pause")
+    console.log("get time on pause")    
 }
 
-// let startTime = () => {
-//     console.log('get time on start')
-//     console.log(timerDisplay.textContent)
+let sTime = () => {
+    console.log('get time on start')
+    console.log(timerDisplay.textContent)
 
-// }
+}
 
 projectSubmit.addEventListener('click', () => {
     console.log("add project")
