@@ -1,6 +1,6 @@
 var startTimerButton = document.querySelector('.startTimer');
 var pauseTimerButton = document.querySelector('.pauseTimer');
-var timerDisplay = document.querySelector('.timer');
+export var timerDisplay = document.querySelector('.timer');
 var startTime;
 var updatedTime;
 var difference;
@@ -9,10 +9,10 @@ var savedTime;
 var paused = 0;
 var running = 0;
 
-function startTimer(){
+ export function startTimer(){
   if(!running){
     startTime = new Date().getTime();
-    tInterval = this.setInterval(getShowTime, 1);
+    tInterval = setInterval(getShowTime, 1);
     paused = 0;
     running = 1;
     timerDisplay.style.background = "#FF0000";
@@ -25,7 +25,7 @@ function startTimer(){
   }
 }
 
-function pauseTimer(){
+export function pauseTimer(){
   if (!difference){
     // if timer never started, don't allow pause button to do anything
   } else if (!paused) {
@@ -45,7 +45,7 @@ function pauseTimer(){
   }
 }
 
-function resetTimer(){
+export function resetTimer(){
   clearInterval(tInterval);
   savedTime = 0;
   difference = 0;
@@ -61,14 +61,14 @@ function resetTimer(){
   pauseTimerButton.style.cursor = "auto";
 }
 
-function getShowTime(){
+export function getShowTime(){
   updatedTime = new Date().getTime();
   if (savedTime){
     difference = (updatedTime - startTime) + savedTime;
   } else {
     difference =  updatedTime - startTime;
   }
-  // var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  var days = Math.floor(difference / (1000 * 60 * 60 * 24));
   var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((difference % (1000 * 60)) / 1000);
@@ -82,4 +82,4 @@ function getShowTime(){
 }
 
 // exports
-export {startTimer, pauseTimer, resetTimer, getShowTime, timerDisplay, }
+// export {startTimer, pauseTimer, resetTimer, getShowTime, timerDisplay, }
