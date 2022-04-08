@@ -1,9 +1,9 @@
-import { startTimer, pauseTimer, resetTimer } from "./stopWatch.js"
+import { startTimer, pauseTimer, resetTimer, getShowTime, timerDisplay,  } from './stopWatch.js'
 // ON LOAD 
 
 // GLOBAL VARIABLES
-const input = document.getElementById("project-input")
-const projectSubmit = document.getElementById("project-submit")
+const input = document.getElementById("project-input");
+const projectSubmit = document.getElementById("project-submit");
 // let timerDisplay = document.getElementsByClassName('timer')
 
 // let project = {
@@ -17,54 +17,54 @@ const projectSubmit = document.getElementById("project-submit")
 //     // }
 // }
 
-
 // add project when submit button is clicked
-let addProject = () => { 
-    
-    //get input from user 
-    const inputValue = input.value
-
-    //create project div
-    let projDiv = document.createElement("div")
-    projDiv.classList.add("projectContainer")
-    
-    //total hours for project
-    let hours = document.createElement("div")
-    hours.classList.add("hours")
-    hours.innerHTML = "[00]"
-
-    //title
-    let title = document.createElement("div")
-    title.classList.add("title")
-    let titleH3 = document.createElement("h3")
-    titleH3.innerHTML = inputValue
-    title.appendChild(titleH3)
-
-    //timer
-    let timer = document.createElement("div")
-    timer.classList.add("timer")
-    timer.textContent = "00:00:00"
-
+let addProject = e => { 
   
-    //play btn (startTimer)
-    let playBtn = document.createElement("div")
-    playBtn.classList.add("startTimer", "reset")
-    playBtn.innerHTML = '<i class="fas fa-play"></i>'
+  //get input from user 
+  const inputValue = input.value
 
-    //pause btn
-    let pauseBtn = document.createElement("div")
-    pauseBtn.classList.add("pauseTimer", "reset")
-    pauseBtn.innerHTML = '<i class="fas fa-pause"></i>'
+  //create project div
+  let projDiv = document.createElement("div")
+  projDiv.classList.add("projectContainer")
 
-    //reset btn
-    let resetBtn = document.createElement("div")
-    resetBtn.classList.add("resetTimer", "reset")
-    resetBtn.innerHTML = "Rest Btn"
+  //total hours for project
+  let hours = document.createElement("div")
+  hours.classList.add("hours")
+  hours.innerHTML = "[00]";
 
-    // delete btn
-    let deleteBtn = document.createElement("div")
-    deleteBtn.classList.add("deleteBtn", "reset")
-    deleteBtn.innerHTML = "Delete"
+  //title
+  let title = document.createElement("div")
+  title.classList.add("title");
+  
+  let titleH3 = document.createElement("h3")
+  titleH3.innerHTML = inputValue;
+  title.appendChild(titleH3)
+
+  //timer
+  let timer = document.createElement("div")
+  timer.classList.add("timer")
+  timer.textContent = "00:00:00:00"
+
+
+  //start btn (startTimer)
+  let playBtn = document.createElement("div")
+  playBtn.classList.add("startTimer", "reset")
+  playBtn.innerHTML = '<i class="fas fa-play"></i>'
+
+  //pause btn
+  let pauseBtn = document.createElement("div")
+  pauseBtn.classList.add("pauseTimer", "reset")
+  pauseBtn.innerHTML = '<i class="fas fa-pause"></i>'
+
+  //reset btn
+  let resetBtn = document.createElement("div")
+  resetBtn.classList.add("resetTimer", "reset")
+  resetBtn.innerHTML = "Rest Btn"
+
+  // delete btn
+  let deleteBtn = document.createElement("div")
+  deleteBtn.classList.add("deleteBtn", "reset")
+  deleteBtn.innerHTML = "Delete"
 
     // append the created elements
     projDiv.appendChild(hours)
@@ -75,30 +75,43 @@ let addProject = () => {
     projDiv.appendChild(resetBtn)
     projDiv.appendChild(deleteBtn)
 
+
     // Listeners
-    projects.addEventListener('click',(e) => {
-      console.log(e.target)
-      startTimer(e)
+    projDiv.addEventListener('click',(e) => {
+      e.stopPropagation()
+      console.log(e.target);
     })
+
     timer.addEventListener('click', () => {
-      
         console.log("Display")
-        startTimer()
+        
     })
 
-    playBtn.addEventListener('click', (e) => {
 
-      import("./stopWatch.js").then(({ startTimer, pauseTimer, resetTimer}) =>{
-        console.log("hello")
-        console.log("start")
-        e.target.style.background="green"
-        startTimer()
-      })
-        
-    })    
+    // let playOnly = e => {
+    //   const project = e.target
+    //   if(project.classList[2] === "timer") {
+    //     console.log(project, "Hi")
+    //   }
+    // }
+
+    playBtn.addEventListener('click', e => {
+      const p = e.target
+      e.stopPropagation()
+          console.log("start");
+          p.style.background="green"
+          timer.style.background="blue"
+          timer.innerHTML = timer.textContent
+          console.log(timer.textContent)
+          
+          startTimer(e.target);
+        })
+   
+
 
     pauseBtn.addEventListener('click', () =>{
         console.log("pause")
+
         pauseTimer()
     })
 
@@ -107,8 +120,7 @@ let addProject = () => {
         resetTimer()
     })
     
-    deleteBtn.addEventListener('click', (e) => {
-        e.stopPropagation()
+    deleteBtn.addEventListener('click', () => {
         let res = confirm(`Delete?`)
         if (res == true) {
             let proj = document.getElementById("projects")
@@ -119,26 +131,21 @@ let addProject = () => {
         console.log("delete")
     })
 
-   
-
-
-    // deleteBtn.classList.add("reset")
     //append the project to the projects div
     document.getElementById("projects").appendChild(projDiv)
 
-
-
-
     input.value = "" // clear input field after a Project Title has been entered
+    input.focus();
+
   } // end addProject function
 
 
-// projectSubmit.addEventListener("click", addProject)
 
 //run addProject when the submit button is clicked.
 projectSubmit.addEventListener("click", (addProject) => {
-    addProject.preventDefault()
-    alertMessage(input)
+    // addProject.preventDefault();
+    console.log('hello');
+    alertMessage();
 });
  
 //create an alert when there is nothing in input
@@ -154,6 +161,10 @@ const alertMessage = () => {
 
 
 
+
+
+
+// for local storage
 let pauseTime = () => {
     console.log(timerDisplay.textContent)
     // let startTime = project.startTime
